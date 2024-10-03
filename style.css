@@ -1,0 +1,50 @@
+body {
+    background-color: lightblue;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.form-container, .address-list {
+    margin-bottom: 20px;
+}
+
+.address-entry {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+.remove-btn {
+    background-color: black;
+    color: orangered;
+    border: none;
+    padding: 5px 10px;
+    border: 1px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.remove-btn:hover {
+    background-color: orangered;
+    color: black;
+}
+
+.add-btn {
+    background-color: black;
+    color: orangered;
+    font-weight: bold;
+    border: 1px;
+    border-radius: 8px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+.add-btn:hover {
+    background-color: orangered;
+    color: black;
+}
+#vorname, #nachname, #strasse, #plz, #ort, #email {
+    background-color: #f9f9f9;
+}

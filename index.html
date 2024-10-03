@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Adressformular</title>
+
+</head>
+<body>
+
+<h1>Adressformular</h1>
+
+<div class="form-container">
+    <form id="addressForm">
+        <div>
+            <label for="vorname">Vorname:</label>
+            <input type="text" id="vorname" name="vorname" required>
+        </div> <br>
+        <div>
+            <label for="nachname">Nachname:</label>
+            <input type="text" id="nachname" name="nachname" required>
+        </div>
+        <br>
+        <div>
+            <label for="strasse">Strasse:</label>
+            <input type="text" id="strasse" name="strasse" required>
+        </div>
+        <br>
+        <div>
+            <label for="plz">PLZ:</label>
+            <input type="text" id="plz" name="plz" pattern="[0-9]{5}" title="Fünfstellige PLZ" required>
+        </div>
+        <br>
+        <div>
+            <label for="ort">Ort:</label>
+            <input type="text" id="ort" name="ort" required>
+        </div>
+        <br>
+        <div>
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" id="duZie" name="duZie">
+            <label for="duZie">Du-Zie</label>
+        </div>
+        <br>
+        <div>
+            <label>Kennen Sie diese Person aus:</label><br>
+            <input type="radio" id="privat" name="beziehung" value="Privat" required>
+            <label for="privat">Privat</label><br>
+            <input type="radio" id="schule" name="beziehung" value="Schule">
+            <label for="schule">Schule</label><br>
+            <input type="radio" id="geschaeft" name="beziehung" value="Geschäft">
+            <label for="geschaeft">Geschäft</label>
+        </div>
+        <br>
+        <button class="add-btn" type="submit">GOODBUTTON</button>
+    </form>
+</div>
+
+<h2>NEUE FREUNDE</h2>
+<div class="address-list" id="addressList"></div>
+
+<script>
+    const form = document.getElementById('addressForm');
+    const addressList = document.getElementById('addressList');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const vorname = document.getElementById('vorname').value;
+        const nachname = document.getElementById('nachname').value;
+        const strasse = document.getElementById('strasse').value;
+        const plz = document.getElementById('plz').value;
+        const ort = document.getElementById('ort').value;
+        const email = document.getElementById('email').value;
+        const duZie = document.getElementById('duZie').checked ? 'Ja' : 'Nein';
+        const beziehung = document.querySelector('input[name="beziehung"]:checked').value;
+
+        const addressEntry = document.createElement('div');
+        addressEntry.classList.add('address-entry');
+        addressEntry.innerHTML = `
+            <p id="fullName"><strong>Name:</strong> ${vorname} ${nachname}</p>
+            <p id="fullAdress"><strong>Adresse:</strong> ${strasse}, ${plz} ${ort}</p>
+            <p id="emaili"><strong>E-Mail:</strong> ${email}</p>
+            <p id="DuZie"><strong>Du-Zie:</strong> ${duZie}</p>
+            <p id="relation"><strong>Beziehung:</strong> ${beziehung}</p>
+            <button class="remove-btn">BADBUTTON</button>
+        `;
+
+
+        const removeBtn = addressEntry.querySelector('.remove-btn');
+        removeBtn.addEventListener('click', function() {
+            addressEntry.remove();
+        });
+
+        addressList.appendChild(addressEntry);
+
+        form.reset();
+    });
+</script>
+
+</body>
+</html>
